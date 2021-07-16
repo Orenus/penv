@@ -1,7 +1,7 @@
 import { assert } from 'console';
 import IEnvsMap, {
-    IEnvMap, IEnvMapStatus, IEnvMapStatuses, EnvMapErrorLevelEnum,
-    IEnvMapError, IEnvMapValidator
+    IEnvMap, IEnvMapStatus, IEnvMapStatuses,
+    IEnvMapError,
 } from './ProcessEnvInterfaces';
 import ProcessEnvLoader from './ProcessEnvLoader';
 import Validators from './validators/Validators';
@@ -12,7 +12,6 @@ export default class ProcessEnv {
     __envMapFilePath: string | null;
     __envMapStatuses: IEnvMapStatuses | null = null;
     __finalValues: any | null = null;
-    __validators: IEnvMapValidator[] = [];
 
     constructor(envMapFilePath: string | null = null) {
         this.__envMapFilePath = envMapFilePath;
@@ -37,12 +36,8 @@ export default class ProcessEnv {
             const val = data[k];
             msg += `${k}: ${val.description}\n`
         }
-        console.log(msg);
+        // console.log(msg);
         return msg;
-    }
-
-    __registerValidator(v: IEnvMapValidator, priority: number) {
-
     }
 
     __validate(k: string, e: IEnvMap): IEnvMapStatus {

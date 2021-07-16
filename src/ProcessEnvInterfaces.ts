@@ -4,11 +4,7 @@
 //     type: 'string',
 //     acceptValues: ['a', 'b', 'c'],
 //     default: 'miao_default',
-//     customValidator: {
-//         key1: (val: string) => parseInt(val, 10) % 2 === 0,
-//         key2: (val: string) => val.length < 3, // any string with up to 2 chars
-//         key3: /ABC\d/ // accepting any string that matches 'ABC' and a single digit afterwards
-//     },
+//     customValidator: /reg ex/ or "VALIDATOR_NAME"
 //     transformations: {
 //         key1: (val: string) => `${val}.txt`,
 //         key2: (val: string) => parseInt(val, 10) / 2
@@ -25,10 +21,6 @@ export interface IEnvMapValidationRegEx {
 export interface IEnvMapValidationFunction {
     (val: string): boolean;
 }
-
-// export interface IEnvMapCustomValidator {
-//     [propName: string]: IEnvMapValidationFunction | IEnvMapValidationRegEx;
-// }
 
 export interface IEnvMapTransformationFunction {
     (val: string): any;
@@ -82,8 +74,4 @@ export interface IEnvMapStatus {
 
 export interface IEnvMapStatuses {
     [propName: string]: IEnvMapStatus
-}
-
-export interface IEnvMapValidator {
-
 }

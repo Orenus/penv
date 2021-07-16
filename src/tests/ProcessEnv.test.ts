@@ -10,8 +10,6 @@ jest.mock('../ProcessEnvLoader', () => {
 });
 
 describe('testing the ProcessEnv mandatory functions', () => {
-    beforeEach(() => {
-    });
 
     test('should yields error when mandatory isn\'t provided', () => {
         mockLoad.mockReturnValueOnce(JSON_MANDATORY);
@@ -39,8 +37,6 @@ describe('testing the ProcessEnv mandatory functions', () => {
 });
 
 describe('testing the ProcessEnv regex validation functions', () => {
-    beforeEach(() => {
-    });
 
     test('should yields error when regex validation fails', () => {
         mockLoad.mockReturnValueOnce(JSON_REGEX_VALIDATOR);

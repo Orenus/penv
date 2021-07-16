@@ -4,7 +4,7 @@ export default class Validators {
     private static sInstance: Validators;
 
     __validators: Array<ProcessEnvValidator>;
-    __prioritySorted: boolean = false;
+    __prioritySorted = false;
 
     private constructor() {
         this.__validators = Array<ProcessEnvValidator>();

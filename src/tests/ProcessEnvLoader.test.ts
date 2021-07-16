@@ -6,10 +6,6 @@ import { YAML_DUMMY, YAML_DUMMY_WITH_COMMENT } from './yaml.mocks';
 
 jest.mock('fs');
 
-const DEFAULT_ENV_MAP_FILE_NAME = ".envMap"
-const POSSIBLE_ENV_MAP_EXTENSIONS = ['yml', 'yaml', 'json'];
-
-
 describe('testing the ProcessEnvLoader class', () => {
 
     const mockFile = (ext: string, expectedFileContent: string) => {
