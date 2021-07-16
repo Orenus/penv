@@ -1,0 +1,16 @@
+---
+kind: pipeline
+type: docker
+
+steps:
+- name: install
+  image: node:14-alpine
+  commands:
+  - npm ci
+
+
+steps:
+- name: build
+  image: node:14-alpine
+  commands:
+  - npm run build-ci
