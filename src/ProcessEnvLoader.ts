@@ -29,7 +29,7 @@ export default class ProcessEnvLoader {
     }
 
     __searchForDefaultFile(): string | null {
-        for (let fileExt of POSSIBLE_ENV_MAP_EXTENSIONS) {
+        for (const fileExt of POSSIBLE_ENV_MAP_EXTENSIONS) {
             const fileName = `${DEFAULT_ENV_MAP_FILE_NAME}.${fileExt}`;
             if (fs.existsSync(fileName)) {
                 return fileName;
