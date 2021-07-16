@@ -19,16 +19,16 @@
 // }
 
 export interface IEnvMapValidationRegEx {
-    (val: RegExp): boolean;
+    re: RegExp;
 }
 
 export interface IEnvMapValidationFunction {
     (val: string): boolean;
 }
 
-export interface IEnvMapCustomValidator {
-    [propName: string]: IEnvMapValidationFunction | IEnvMapValidationRegEx;
-}
+// export interface IEnvMapCustomValidator {
+//     [propName: string]: IEnvMapValidationFunction | IEnvMapValidationRegEx;
+// }
 
 export interface IEnvMapTransformationFunction {
     (val: string): any;
@@ -44,31 +44,46 @@ export interface IEnvMap {
     readonly type: string;
     acceptValues?: Array<string | boolean | number>;
     default: string | boolean | number | null;
-    customValidator?: IEnvMapCustomValidator;
+    customValidator?: string | RegExp; // custom validator name or regex
     transformations?: IEnvMapTransformation;
     hidden?: boolean;
     children?: any;
+    finalValue?: any;
 }
 
 export default interface IEnvsMap {
     [propName: string]: IEnvMap;
 }
 
-export enum IEnvMapErrorLevelEnum {
+export enum EnvMapErrorLevelEnum {
     INFO,
     WARNING,
     ERROR
 }
 
-export interface IEnvMapError {
-    message: string;
-    level: IEnvMapErrorLevelEnum;
+export enum EnvMapErrorTypeEnum {
+    MANDATORY,
+    VALIDATION,
+    INVALID_VALUE
 }
 
+export interface IEnvMapError {
+    level: EnvMapErrorLevelEnum;
+    message: string;
+}
+
+export interface IEnvMapErrors {
+    [propName: string]: IEnvMapError
+}
 export interface IEnvMapStatus {
-    // readonly status: boolean;
-    readonly key: string;
-    readonly map: IEnvMap;
     readonly actual: any;
-    error?: IEnvMapError | null;
+    errors?: Array<IEnvMapError> | null;
+}
+
+export interface IEnvMapStatuses {
+    [propName: string]: IEnvMapStatus
+}
+
+export interface IEnvMapValidator {
+
 }
