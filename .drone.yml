@@ -8,8 +8,6 @@ steps:
   commands:
   - npm ci
 
-
-steps:
 - name: build
   image: node:14-alpine
   commands:
